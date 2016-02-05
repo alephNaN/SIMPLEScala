@@ -3,13 +3,20 @@
 object Driver {
   def main(args: Array[String]) : Unit = {
 
-
     additionTest()
     println()
+
     nestedAdditionTest()
     println()
-    nestedMultiplicationTest()
 
+    nestedMultiplicationTest()
+    println()
+
+    lessThanTestOne()
+    println()
+
+    lessThanTestTwo()
+    println()
   }
 
   def additionTest() = {
@@ -44,5 +51,40 @@ object Driver {
 
     (new Machine(e)).run
   }
+
+  def lessThanTestOne() = {
+    val left = new Multiply(
+      new SimpleNumber(5),
+      new Add (
+        new SimpleNumber(4),
+        new SimpleNumber(13)
+      )
+    )
+
+    val right = new Multiply(new SimpleNumber(10), new SimpleNumber(6))
+
+    val e = new LessThan(left, right)
+
+    (new Machine(e)).run
+
+  }
+
+  def lessThanTestTwo() = {
+    val left = new Multiply(
+      new SimpleNumber(5),
+      new Add (
+        new SimpleNumber(4),
+        new SimpleNumber(13)
+      )
+    )
+
+    val right = new Multiply(new SimpleNumber(10), new SimpleNumber(6))
+
+    val e = new LessThan(right, left)
+
+    (new Machine(e)).run
+
+  }
+
 
 }
