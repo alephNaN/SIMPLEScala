@@ -1,6 +1,6 @@
 class Add(left : Expression, right: Expression) extends Expression {
 
-  override def toString() = left + " + " + right
+  override def toString() = "(" + left + "+" + right + ")"
 
   def isReducible(): Boolean = { true }
 
@@ -15,7 +15,7 @@ class Add(left : Expression, right: Expression) extends Expression {
 
 class Multiply(left: Expression, right: Expression) extends Expression {
 
-  override def toString() = left + " * " + right
+  override def toString() = "(" + left + "*" + right + ")"
 
   def isReducible(): Boolean = { true }
 
