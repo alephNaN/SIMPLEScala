@@ -7,18 +7,17 @@ class Machine(_expression: Expression) {
     val pre = this.expression
     this.expression = this.expression.reduce
 
-    println("Reduced: [" + pre + "] -> " + "[" + this.expression + "]")
+    println("Reduce: " + pre + " -> " + this.expression)
   }
 
   def run() : Unit = {
-    println("Expression: " + this.expression)
+    println("Initial Expression: " + this.expression)
     while (expression.isReducible ) {
-      println("Expression is reducible. ")
       this.step()
 
     }
 
-    println("Reduced Expression: " + this.expression)
+    println("Final Reduced Expression: " + this.expression)
 
   }
 
