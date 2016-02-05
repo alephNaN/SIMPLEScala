@@ -1,5 +1,5 @@
 // Represents a Integer type in Simple
-class SimpleNumber(_value : Number) extends Primitive {
+class SimpleInteger(_value : Int) extends Primitive {
 
   val value = _value
 

@@ -21,8 +21,8 @@ object Driver {
 
   def additionTest() = {
     val e = new Add (
-      new SimpleNumber(5),
-      new SimpleNumber(7)
+      new SimpleInteger(5),
+      new SimpleInteger(7)
     )
 
     (new Machine(e)).run
@@ -30,10 +30,10 @@ object Driver {
 
   def nestedAdditionTest() = {
     val e = new Add (
-      new SimpleNumber(5),
+      new SimpleInteger(5),
       new Add (
-        new SimpleNumber(4),
-        new SimpleNumber(13)
+        new SimpleInteger(4),
+        new SimpleInteger(13)
       )
     )
 
@@ -42,10 +42,10 @@ object Driver {
 
   def nestedMultiplicationTest() = {
     val e = new Multiply(
-      new SimpleNumber(5),
+      new SimpleInteger(5),
       new Add (
-        new SimpleNumber(4),
-        new SimpleNumber(13)
+        new SimpleInteger(4),
+        new SimpleInteger(13)
       )
     )
 
@@ -54,14 +54,14 @@ object Driver {
 
   def lessThanTestOne() = {
     val left = new Multiply(
-      new SimpleNumber(5),
+      new SimpleInteger(5),
       new Add (
-        new SimpleNumber(4),
-        new SimpleNumber(13)
+        new SimpleInteger(4),
+        new SimpleInteger(13)
       )
     )
 
-    val right = new Multiply(new SimpleNumber(10), new SimpleNumber(6))
+    val right = new Multiply(new SimpleInteger(10), new SimpleInteger(6))
 
     val e = new LessThan(left, right)
 
@@ -71,14 +71,14 @@ object Driver {
 
   def lessThanTestTwo() = {
     val left = new Multiply(
-      new SimpleNumber(5),
+      new SimpleInteger(5),
       new Add (
-        new SimpleNumber(4),
-        new SimpleNumber(13)
+        new SimpleInteger(4),
+        new SimpleInteger(13)
       )
     )
 
-    val right = new Multiply(new SimpleNumber(10), new SimpleNumber(6))
+    val right = new Multiply(new SimpleInteger(10), new SimpleInteger(6))
 
     val e = new LessThan(right, left)
 
