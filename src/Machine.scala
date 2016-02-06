@@ -21,12 +21,12 @@ class Machine(statement: Statement, environment: Environment) {
   def run() : Unit = {
 
     while (currStatement.isReducible ) {
-      println("Statement: " + this.currStatement + ", Environment: " + this.environment)
+      println("Statement: " + this.currStatement + ", Environment: " + this.currEnvironment)
 
       this.step()
     }
 
-    println("Final Statement: " + this.currStatement + ", Environment: " + this.environment)
+    println("Final Statement: " + this.currStatement + ", Environment: " + this.currEnvironment)
 
 
   }
