@@ -1,7 +1,7 @@
 import EnvironmentType.Environment
 
 // Represents a Integer type in Simple
-class SimpleInteger(_value : Int) extends Primitive {
+case class SimpleInteger(_value : Int) extends Primitive {
 
   val value = _value
 
@@ -15,7 +15,7 @@ class SimpleInteger(_value : Int) extends Primitive {
 }
 
 // Represents a boolean type in SIMPLE
-class SimpleBoolean(_value : Boolean) extends Primitive {
+case class SimpleBoolean(_value : Boolean) extends Primitive {
 
   val value = _value
 
