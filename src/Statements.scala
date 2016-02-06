@@ -17,7 +17,7 @@ class Assign(name: Symbol, expr: Expression) extends Statement {
 
   override def toString() = { name + " = " + expr }
 
-  def isReducible = true
+  def isReducible() = { true }
 
   def reduce(env: Environment) : Tuple2[Statement, EnvironmentType.Environment] =  {
     expr.isReducible match {
@@ -31,5 +31,5 @@ class Assign(name: Symbol, expr: Expression) extends Statement {
 
   }
 
-
 }
+
