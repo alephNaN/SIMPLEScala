@@ -2,26 +2,32 @@ import EnvironmentType.Environment
 
 
 // Abstract Machine to Single Step reduce expression
-class Machine(_expression: Expression, environment: Environment) {
+class Machine(statement: Statement, environment: Environment) {
 
-  var expression = _expression
+  var currStatement = statement
+  var currEnvironment = environment
 
   def step() = {
-    val pre = this.expression
+    val pre = this.currStatement
 
-    this.expression = this.expression.reduce(environment)
+    val (nextStatement, nextEnvironment) = this.currStatement.reduce(this.environment)
 
-    println("Reduce: " + pre + " -> " + this.expression)
+    currStatement = nextStatement
+    currEnvironment = nextEnvironment
+
+    println("Reduce: " + pre + " -> " + this.currStatement)
   }
 
   def run() : Unit = {
-    println("Initial Expression: " + this.expression)
-    while (expression.isReducible ) {
-      this.step()
 
+    while (currStatement.isReducible ) {
+      println("Statement: " + this.currStatement + ", Environment: " + this.environment)
+
+      this.step()
     }
 
-    println("Final Reduced Expression: " + this.expression)
+    println("Final Statement: " + this.currStatement + ", Environment: " + this.environment)
+
 
   }
 

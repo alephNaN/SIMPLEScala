@@ -1,8 +1,10 @@
 import EnvironmentType.Environment
 
-trait Expression {
+trait Operatable {
+  def isReducible(): Boolean
+}
 
-  def isReducible() : Boolean
+trait Expression extends Operatable{
 
   def reduce(env: Environment) : Expression
 
