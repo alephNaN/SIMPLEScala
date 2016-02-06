@@ -13,6 +13,10 @@ object Driver {
 
     sequenceTest()
     println()
+
+    whileTest()
+    println()
+
   }
 
 
@@ -63,4 +67,15 @@ object Driver {
     m.run()
   }
 
+  def whileTest() = {
+
+    val statement = new While(
+      new LessThan( new Variable('x), new SimpleInteger(500)),
+      new Assign('x, new Multiply(new Variable('x), new SimpleInteger(2)))
+    )
+
+    val environment : Environment = Map('x -> new SimpleInteger(2))
+
+    (new Machine(statement, environment)).run()
+  }
 }

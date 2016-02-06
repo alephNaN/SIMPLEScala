@@ -14,7 +14,7 @@ class Machine(statement: Statement, environment: Environment) {
 
     currStatement = nextStatement
     currEnvironment = nextEnvironment
-    
+
     println("Reduce: " + pre + " -> " + this.currStatement)
   }
 

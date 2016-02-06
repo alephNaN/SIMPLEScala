@@ -26,5 +26,26 @@ class If(condition: Expression, consequence: Statement, alternative: Statement) 
 
   }
 
+}
+
+class While(condition: Expression, body: Statement) extends ControlStructure {
+
+  override def toString() : String = {
+    "while(" + condition + " ) { " + body + " }"
+  }
+
+  def isReducible = { true }
+
+  def reduce(env: Environment): Tuple2[Statement, Environment] = {
+    val reducedStatement = (
+      new If(
+        condition,
+        new Sequence(body, this),
+        new Noop
+      ))
+
+    (reducedStatement, env)
+
+  }
 
 }
