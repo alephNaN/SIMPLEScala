@@ -1,3 +1,5 @@
+import EnvironmentType.Environment
+
 // Represents a Integer type in Simple
 class SimpleInteger(_value : Int) extends Primitive {
 
@@ -7,8 +9,8 @@ class SimpleInteger(_value : Int) extends Primitive {
 
   override def toString(): String = { value.toString }
 
-  // irreducible reduces to itself
-  def reduce() : Expression = this
+  // irreducible reduces to itself, leaving environment unchanged
+  def reduce(env: Environment) : Expression = this
 
 }
 
@@ -21,7 +23,7 @@ class SimpleBoolean(_value : Boolean) extends Primitive {
 
   override def toString(): String = { value.toString }
 
-  // irreducible reduces to itself
-  def reduce() : Expression = this
+  // irreducible reduces to itself, leaving environment unchanged
+  def reduce(env: Environment) : Expression = this
 
 }

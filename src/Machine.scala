@@ -1,11 +1,15 @@
+import EnvironmentType.Environment
+
+
 // Abstract Machine to Single Step reduce expression
-class Machine(_expression: Expression) {
+class Machine(_expression: Expression, environment: Environment) {
 
   var expression = _expression
 
   def step() = {
     val pre = this.expression
-    this.expression = this.expression.reduce
+
+    this.expression = this.expression.reduce(environment)
 
     println("Reduce: " + pre + " -> " + this.expression)
   }
@@ -21,4 +25,8 @@ class Machine(_expression: Expression) {
 
   }
 
+}
+
+object EnvironmentType {
+  type Environment = Map[Symbol, Primitive]
 }

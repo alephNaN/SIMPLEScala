@@ -1,4 +1,6 @@
+import EnvironmentType.Environment
 
+import scala.collection.immutable.HashMap
 
 object Driver {
   def main(args: Array[String]) : Unit = {
@@ -6,7 +8,7 @@ object Driver {
     additionTest()
     println()
 
-    nestedAdditionTest()
+   nestedAdditionTest()
     println()
 
     nestedMultiplicationTest()
@@ -17,19 +19,24 @@ object Driver {
 
     lessThanTestTwo()
     println()
+
+    variableTest()
+    println()
   }
 
   def additionTest() = {
-    val e = new Add (
+    val expr = new Add (
       new SimpleInteger(5),
       new SimpleInteger(7)
     )
 
-    (new Machine(e)).run
+    val env : Environment = Map()
+
+    (new Machine(expr, env)).run
   }
 
   def nestedAdditionTest() = {
-    val e = new Add (
+    val expr = new Add (
       new SimpleInteger(5),
       new Add (
         new SimpleInteger(4),
@@ -37,11 +44,13 @@ object Driver {
       )
     )
 
-    (new Machine(e)).run
+    val env : Environment = Map()
+
+    (new Machine(expr, env)).run
   }
 
   def nestedMultiplicationTest() = {
-    val e = new Multiply(
+    val expr = new Multiply(
       new SimpleInteger(5),
       new Add (
         new SimpleInteger(4),
@@ -49,7 +58,9 @@ object Driver {
       )
     )
 
-    (new Machine(e)).run
+    val env : Environment = Map()
+
+    (new Machine(expr, env)).run
   }
 
   def lessThanTestOne() = {
@@ -63,9 +74,11 @@ object Driver {
 
     val right = new Multiply(new SimpleInteger(10), new SimpleInteger(6))
 
-    val e = new LessThan(left, right)
+    val expr = new LessThan(left, right)
 
-    (new Machine(e)).run
+    val env : Environment = Map()
+
+    (new Machine(expr, env)).run
 
   }
 
@@ -80,10 +93,22 @@ object Driver {
 
     val right = new Multiply(new SimpleInteger(10), new SimpleInteger(6))
 
-    val e = new LessThan(right, left)
+    val expr = new LessThan(right, left)
 
-    (new Machine(e)).run
+    val env : Environment = Map()
 
+    (new Machine(expr, env)).run
+
+  }
+
+  def variableTest() = {
+    val expr =  new Add(
+      new Variable('x),
+      new SimpleInteger(3)
+    )
+    val env: Environment = Map('x -> new SimpleInteger(2))
+
+    new Machine(expr, env).run
   }
 
 

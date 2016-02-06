@@ -1,8 +1,10 @@
+import EnvironmentType.Environment
+
 trait Expression {
 
   def isReducible() : Boolean
 
-  def reduce() : Expression
+  def reduce(env: Environment) : Expression
 
 }
 
