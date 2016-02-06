@@ -1,7 +1,6 @@
 import EnvironmentType.Environment
 
-class Variable(_name: Symbol) extends Expression {
-  val name = _name
+case class Variable(name: Symbol) extends Expression {
 
   override def toString() = { name.toString }
 
