@@ -10,6 +10,9 @@ object Driver {
 
     ifTest()
     println()
+
+    sequenceTest()
+    println()
   }
 
 
@@ -46,6 +49,18 @@ object Driver {
 
       m.run()
 
+  }
+
+  def sequenceTest() = {
+    val statement = new Sequence(
+      new Assign('x, new SimpleInteger(3)),
+      new Assign('y, new Add(new Variable('x), new SimpleInteger(4)))
+    )
+
+    val environment : Environment = Map()
+
+    val m = new Machine(statement, environment)
+    m.run()
   }
 
 }
