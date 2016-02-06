@@ -10,11 +10,11 @@ class Machine(statement: Statement, environment: Environment) {
   def step() = {
     val pre = this.currStatement
 
-    val (nextStatement, nextEnvironment) = this.currStatement.reduce(this.environment)
+    val (nextStatement, nextEnvironment) = this.currStatement.reduce(this.currEnvironment)
 
     currStatement = nextStatement
     currEnvironment = nextEnvironment
-
+    
     println("Reduce: " + pre + " -> " + this.currStatement)
   }
 
