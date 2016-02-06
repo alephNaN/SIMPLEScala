@@ -23,8 +23,8 @@ class Multiply(left: Expression, right: Expression) extends Expression {
 
   def reduce(env: Environment) = {
     (left.isReducible, right.isReducible) match {
-      case (true, _) => new Add( left.reduce(env) , right )
-      case (_, true) => new Add( left , right.reduce(env) )
+      case (true, _) => new Multiply( left.reduce(env) , right )
+      case (_, true) => new Multiply( left , right.reduce(env) )
       case _ => new SimpleInteger(left.asInstanceOf[Primitive].value.asInstanceOf[Int].*(right.asInstanceOf[Primitive].value.asInstanceOf[Int]))
     }
   }
